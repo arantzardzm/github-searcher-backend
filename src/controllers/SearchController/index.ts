@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import { checkAlphaRegex, checkAlphaNumRegex } from '../utils/validator';
+import { redisSet } from '../../redis'
 
 export default async function searchController(req: Request, res: Response) {
   try {
@@ -12,8 +13,10 @@ export default async function searchController(req: Request, res: Response) {
     if (!response || !response.data) {
       return res.send({ status: 400, message: 'Error checking response', data: [] });
     }
+
+    redisSet(searchInput, selectInput, response.data);
     return res.send({ status: 200, message: 'Success', data: response.data });
   } catch (err) {
-    return res.send({ status: 500, message: 'Error fetching response', data: [] });
+    return res.send({ status: 500, message: 'Error fetching response', data: []});
   }
 }
