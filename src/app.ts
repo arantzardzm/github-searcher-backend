@@ -1,13 +1,10 @@
-const express = require('express');
-const redis = require("redis");
 import * as bodyParser from 'body-parser';
 import routes from './routes';
 
-const port = 2900; // default port to listen
-// const port_redis = 6379; // redis port to listen
+const express = require('express');
 
-// Configure redis
-// const redis_client = redis.createClient(port_redis);
+// Default port to listen
+const port = 2900;
 
 // Create app
 const app = express();
