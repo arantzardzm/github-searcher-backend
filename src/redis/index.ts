@@ -29,7 +29,7 @@ export const redisSet = (
 ) => {
   redisClient.setex(
     searchInput + selectInput,
-    10000,
+    7200, // 2 hours
     JSON.stringify(searchResult),
   );
 };
