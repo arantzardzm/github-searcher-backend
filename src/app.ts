@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import routes from './routes';
 
 const express = require('express');
+const cors = require('cors');
 
 // Default port to listen
 const port = 2900;
@@ -9,6 +10,7 @@ const port = 2900;
 // Create app
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
