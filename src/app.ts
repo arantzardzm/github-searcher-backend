@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import routes from './routes';
 
 const express = require('express');
@@ -7,8 +8,11 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 
+// Configure env file
+dotenv.config();
+
 // Default port to listen
-const port = 2900;
+const port = process.env.PORT || 2900;
 
 // Create app
 const app = express();
