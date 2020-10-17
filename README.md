@@ -51,7 +51,7 @@ If it does not find anything, it makes the API call to Github and then sets the 
 This implementation allows for faster retrieval of data.
 
 
-## Tests
+## Tests (WIP)
 In order to run the test cases created for this project, you can run the following command:
 ```
 yarn test:cover
