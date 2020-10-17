@@ -1,0 +1,130 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Github Project Swagger",
+    "description": "",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:2900",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/search": {
+      "post": {
+        "tags": ["Search"],
+        "description": "Get a list of users from the github API",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/SearchRequest"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/SearchResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/clear-cache": {
+      "post": {
+        "tags": ["Cache"],
+        "description": "This clears the cache from the redis server",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {}
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Cache is cleared",
+            "schema": {
+              "$ref": "#/definitions/ClearCacheResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SearchRequest": {
+      "required": ["selectInput", "searchInput"],
+      "properties": {
+        "selectInput": {
+          "type": "string"
+        },
+        "searchInput": {
+          "type": "string"
+        }
+      }
+    },
+    "SearchResponse": {
+      "required": [
+        "status",
+        "message",
+        "data",
+        "total_count",
+        "incomplete_results",
+        "items"
+      ],
+      "properties": {
+        "status": {
+          "type": "number"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "total_count": {
+              "type": "number"
+            },
+            "incomplete_results": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ClearCacheResponse": {
+      "required": ["status", "message"],
+      "properties": {
+        "status": {
+          "type": "number"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
