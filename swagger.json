@@ -24,7 +24,7 @@
     "/api/search": {
       "post": {
         "tags": ["Search"],
-        "description": "Get a list of users from the github API",
+        "description": "Get a list of users, repositories, or issues from the Github API",
         "parameters": [
           {
             "in": "body",
@@ -37,7 +37,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "New user is created",
+            "description": "Get the data of a list of users, repositories, or issues from the Github API",
             "schema": {
               "$ref": "#/definitions/SearchResponse"
             }
@@ -48,7 +48,7 @@
     "/api/clear-cache": {
       "post": {
         "tags": ["Cache"],
-        "description": "This clears the cache from the redis server",
+        "description": "Clear cache from the redis server",
         "parameters": [
           {
             "in": "body",
@@ -59,7 +59,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "Cache is cleared",
+            "description": "Clear cache from the redis server",
             "schema": {
               "$ref": "#/definitions/ClearCacheResponse"
             }
