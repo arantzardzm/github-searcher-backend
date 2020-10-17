@@ -1,5 +1,5 @@
 ## Github Searcher Backend
-This project contains the backend for the Github Search Application. This server contains two RESTful APIs. One retrieves Github information and the other one clears the redis server cache: /
+This project contains the backend for the Github Search Application. This server contains two RESTful APIs. One retrieves Github information and the other one clears the redis server cache:
 ```
 /api/search
 /api/clear-cache
