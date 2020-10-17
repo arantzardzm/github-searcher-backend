@@ -1,5 +1,5 @@
 ## Github Searcher Backend
-This project contains the backend for the Github Search Application. This server contains two RESTful APIs. One retrieves Github information and the other one clears the redis server cache:
+This project contains the backend for the Github Search Application. This server contains two RESTful APIs. One retrieves Github information and the other one clears the redis-server cache:
 ```
 /api/search
 /api/clear-cache
@@ -30,7 +30,7 @@ cp env .env
 yarn install
 yarn start
 ```
-The server should start in: http://localhost:2900. \
+The server should start in: http://localhost:2900.
 
 
 ## Installation Redis Server
@@ -45,10 +45,10 @@ The server is split into two routes and two controllers. Each pair handles the s
 
 
 ## Implementation Redis
-The application uses Redis for handling cache storage. You can find the functions that handle this inside the redis folder. \
-The redisSearch function is called before the actual call to Github, it quickly makes a request to our redis-server and if it finds the search and select key, returns the data. \
-If it does not find anything, it makes the call to Github and then sets the retrieved data inside our redis-server using the redisSet function. \
-This implementation us for faster retrieval of data.
+The application uses Redis for handling cache storage. You can find the functions used for this implementation inside the redis folder. \
+The redisSearch function is called before the actual API call to Github, it quickly makes a request to our redis-server and if it finds the search and select key, it returns the previously stored data. \
+If it does not find anything, it makes the API call to Github and then sets the retrieved data inside our redis-server using the search and select key using the redisSet function. \
+This implementation allows for faster retrieval of data.
 
 
 ## Tests
